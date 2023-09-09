@@ -1,0 +1,91 @@
+From 9fe7e027acc8e0e6a55001a137688d5af66e7400 Mon Sep 17 00:00:00 2001
+From: Rahul Khairnar <rahulkhairnarr@gmail.com>
+Date: Sat, 9 Sep 2023 09:28:45 +0530
+Subject: [PATCH] Update changes
+
+---
+ .gitignore                          |   2 ++
+ __pycache__/client3.cpython-311.pyc | Bin 0 -> 1774 bytes
+ client3.py                          |  10 +++++++---
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 __pycache__/client3.cpython-311.pyc
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..ff43a52
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++env
++env/*
+\ No newline at end of file
+diff --git a/__pycache__/client3.cpython-311.pyc b/__pycache__/client3.cpython-311.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..6d4dfc340ab9c3ba9b2307e592514d38e5315d45
+GIT binary patch
+literal 1774
+zcmaJB&r2g$_`PIiGBJr7*QDK=!)w9TSffU})CRXbG-=t3=-Mti*bQUmsS}e-c4pFL
+z(+D~Akb;L47B<ipgcfV@BE9S$E$knVNMOT2LFj4eC16kX((g@-nuYHB@xAYR@B96I
+zGr#(LeFz5q`(GvQM(8g_bcgQ(IXl7#JwXama0W@86HC~p9g<UVNSxx7c!m2GNrJ)y
+zbWu?ewjE4ff9gQg4ZDx>`=I9#c4zcbarD(Mk_Y%u+S}!z&UDuYwAbIgy?#<|Z{RxJ
+z#X%2FUs;0d!|oI6wcAVW4PLTcL-t=IFZtbw`oa5gX$Y(ebf{P38i$Z{LmHL>QV`zX
+zP+auJ4_FcDFhDmA0PLedfS#Y+y^<L1zHdu-0lH|A2KOPOhjvz(b43BY5(`NDtl(v+
+z(=rPCUNWYI;@exMnU76PWwex>+0qO%Ha9&tJ@ueK^+%tm%I$A<)PEpTsmpAE6!?ss
+zu+ORho**|WfzF$Ncg7AjuW`eh<LXUuUg5p*>^NSL;;uMfBjqePcDNEQIZDnFx4}VV
+zeDOoFsB20gMTwlr5Oa%?9Hk0X$k%eFKn-GQWRvEoE}OtX6xo#Xnwm3-#T%xU+O}M#
+zmQSv$ipA%3HAOqLY;1?I#cyOZ*$nd*|Dd3mRA;HM+`yacu)2Y*gX)lfWbgn88|NRy
+zV{6N@tdc|y<bd0tYa5y_Z_-FQpG`%Khcse>bR@c#%BVDF&Q9hZS>8=*#=*fw=Ah2n
+zoiMeF0Lti;n{Rpj)%SK6%85S*165kP(+s}5_plk9Y79;{2dB$-{^z>o4U`it&tNrN
+zTRq_Go=BaGoPkc1y6hhySQYI$i-52?+nwVmzC%8zCV}*+8qqe09eGkFa!$Fx*U3vJ
+z`x^>7EZ4<z7g;x$2|{%C9a|#Acb6&Bhk+c2ZLmL1CpM3_64lv<ZHdWbR#tP#WYM+6
+z@~)7go5&^^gUrW@!UTcD#fsuY$A0V_hl`@EmW&$VH!Uu0XgN#J!9y);^%wL^MqQuO
+zDRjAET0)1m_@yrscULXEVCUI(h#AhwS(;2*oC;;Lc+jy)Eu6G?XavQuTwN_L(4yrj
+zn1QNhWz*txDl3*?_lcpy-xJy0qO<sP4+E@2>>h*C`q>4G)y~VgIG=?M&d`tbF}P#N
+zG*$q%ofzZxIKtkths_r9mF?L=fqHkf1>~M6^KkHD8Mg%&o@}E_Fzm#>Ho64;i1Sv8
+zC(fH~)Q4wJeg4W9)zRu`4SzrOc<j6TyZ75j<Y#SA!7cwtb@=gHwa<QBcoCX83C$ec
+zdOH96{ITy?c<%dS;Q2sfcCk6T*a$5(LrX70_fA6h8ljbDXr<v_ZTeR$!m0RaD=^YV
+z4!43ku##v+Zy$x8(MB}hjK&+@$x5R7QB6GvKx<bLmBh0Go5w1f^(E<It;zMy8d`67
+zQ%!HGZm(0(SK%w^+FWgJFL7|IF%oT#L>v9lhB(s{XX^H92Ov;8+BVk>&CdLPu#L9l
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..927610f 100644
+--- a/client3.py
++++ b/client3.py
+@@ -35,14 +35,16 @@ def getDataPoint(quote):
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = bid_price + ask_price / 2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+     """ ------------- Update this function ------------- """
+-    return 1
++    if price_b == 0:
++        return
++    return price_a / price_b
+ 
+ 
+ # Main
+@@ -52,8 +54,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(prices['ABC'], prices['DEF']))
+-- 
+2.42.0.windows.2
+
